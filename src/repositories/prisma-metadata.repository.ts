@@ -1,6 +1,6 @@
+import { IMetadataRepository } from "../interfaces";
 import { prisma } from "../lib/prisma";
 import { CreateProfileDto, Profile, ProfileMetadata } from "../types";
-import { IMetadataRepository } from "../interfaces/metadata.interface";
 
 export class PrismaMetadataRepository implements IMetadataRepository {
   async createProfile(profile: CreateProfileDto): Promise<Profile> {
