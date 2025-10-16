@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { SupabaseConfig } from "../types/supabase.type";
+import { SupabaseConfig } from "../types";
 
 const supabaseConfig: SupabaseConfig = {
   url: process.env.SUPABASE_URL || "",
