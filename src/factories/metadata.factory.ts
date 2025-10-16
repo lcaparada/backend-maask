@@ -1,6 +1,8 @@
-import { IMetadataRepository } from "../interfaces/metadata.interface";
-import { SupabaseMetadataRepository } from "../repositories/supabase-metadata.repository";
-import { PrismaMetadataRepository } from "../repositories/prisma-metadata.repository";
+import { IMetadataRepository } from "../interfaces";
+import {
+  PrismaMetadataRepository,
+  SupabaseMetadataRepository,
+} from "../repositories";
 
 export class MetadataRepositoryFactory {
   private static instance: IMetadataRepository | null = null;
