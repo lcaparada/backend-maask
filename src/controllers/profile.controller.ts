@@ -85,7 +85,6 @@ export class ProfileController {
         authTag
       );
 
-      // Upload metadata e database insert em paralelo
       const metadataUploadPromise = this.storageService
         .uploadFile(metadataPath, Readable.from(Buffer.from(cryptoMetadata)))
         .then(() => {
