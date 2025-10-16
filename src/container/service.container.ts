@@ -1,6 +1,8 @@
-import { MetadataService } from "../services/metadata.service";
-import { StorageService } from "../services/storage.service";
-import { EncryptionService } from "../services/encryption.service";
+import {
+  EncryptionService,
+  MetadataService,
+  StorageService,
+} from "../services";
 
 class ServiceContainer {
   private static instance: ServiceContainer;
