@@ -6,6 +6,7 @@ export class PrismaMetadataRepository implements IMetadataRepository {
   async createProfile(profile: CreateProfileDto): Promise<Profile> {
     const created = await prisma.profile.create({
       data: {
+        ...(profile.id && { id: profile.id }),
         name: profile.name,
         originalName: profile.original_name,
         size: BigInt(profile.size),

@@ -6,9 +6,18 @@ export class SupabaseMetadataRepository implements IMetadataRepository {
   private readonly tableName = "profiles";
 
   async createProfile(profile: CreateProfileDto): Promise<Profile> {
+    const insertData = {
+      ...(profile.id && { id: profile.id }),
+      name: profile.name,
+      original_name: profile.original_name,
+      size: profile.size,
+      encrypted_size: profile.encrypted_size,
+      storage_path: profile.storage_path,
+    };
+
     const { data, error } = await supabase
       .from(this.tableName)
-      .insert([profile])
+      .insert([insertData])
       .select()
       .single();
 

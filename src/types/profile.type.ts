@@ -10,6 +10,7 @@ export interface Profile {
 }
 
 export interface CreateProfileDto {
+  id?: string;
   name: string;
   original_name: string;
   size: number;
