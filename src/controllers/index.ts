@@ -5,7 +5,5 @@ import { serviceContainer } from "../container";
 import { ProfileController } from "./profile.controller";
 
 export const profileController = new ProfileController(
-  serviceContainer.metadataService,
-  serviceContainer.storageService,
-  serviceContainer.encryptionService
+  serviceContainer.profileService
 );
