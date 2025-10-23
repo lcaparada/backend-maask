@@ -10,7 +10,7 @@ import { fastifyCors } from "@fastify/cors";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastifyMultipart from "@fastify/multipart";
-import { profileRoutes } from "./routes";
+import { profileRoutes, authRoutes } from "./routes";
 
 const app = Fastify({
   logger: true,
@@ -67,6 +67,7 @@ app.register(fastifySwaggerUi, {
 app.setSerializerCompiler(serializerCompiler);
 app.setValidatorCompiler(validatorCompiler);
 
+app.register(authRoutes);
 app.register(profileRoutes);
 
 app.get("/health", async () => {

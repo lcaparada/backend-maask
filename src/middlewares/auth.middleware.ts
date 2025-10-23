@@ -1,4 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
+import { supabaseAuth } from "../config/supabase";
 
 export async function authMiddleware(
   request: FastifyRequest,
@@ -23,16 +24,23 @@ export async function authMiddleware(
       });
     }
 
-    const expectedToken = process.env.BEARER_TOKEN || "mock-token";
+    const {
+      data: { user },
+      error,
+    } = await supabaseAuth.auth.getUser(token);
 
-    if (token !== expectedToken) {
+    if (error || !user) {
       return reply.status(401).send({
         error: "Unauthorized",
-        message: "Invalid token",
+        message: "Invalid or expired token",
       });
     }
 
-    request.user = { authenticated: true };
+    request.user = {
+      id: user.id,
+      email: user.email,
+      authenticated: true,
+    };
   } catch (error) {
     return reply.status(500).send({
       error: "Internal Server Error",

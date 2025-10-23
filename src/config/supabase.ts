@@ -14,4 +14,14 @@ if (!supabaseConfig.url || !supabaseConfig.key) {
 }
 
 export const supabase = createClient(supabaseConfig.url, supabaseConfig.key);
+
+const anonKey = process.env.SUPABASE_ANON_KEY || supabaseConfig.key;
+export const supabaseAuth = createClient(supabaseConfig.url, anonKey, {
+  auth: {
+    autoRefreshToken: false,
+    persistSession: false,
+    detectSessionInUrl: false,
+  },
+});
+
 export { supabaseConfig };
