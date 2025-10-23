@@ -13,7 +13,6 @@ export class ByteCounterStream extends Transform {
     return this.bytesWritten;
   }
 
-  // Alias para compatibilidade
   get byteCount(): number {
     return this.bytesWritten;
   }
